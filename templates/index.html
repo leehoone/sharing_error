@@ -3,11 +3,16 @@
 <head>
 
     <!-- Webpage Title -->
-    <title>Home | D3Workout</title>
+    <title>Home | D3Worklog</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='health.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='health.png') }}" type="image/x-icon">
+    <meta property="og:title" content="D3Worklog - 세상을 건강하게"/>
+    <meta property="og:description" content="mini project for Web Plus"/>
+    <meta property="og:image" content="{{ url_for('static', filename='ogimg.png') }}"/>
 
     <!-- Bulma CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
@@ -18,6 +23,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script src="{{ url_for('static', filename='myjs.js') }}"></script>
+    <script>
+
+        $(document).ready(function(){
+          get_posts()
+        })
+
+    </script>
 
 </head>
 <body>
@@ -26,7 +38,7 @@
         <a class="navbar-item" href="/">
             <img src="{{ url_for('static', filename='logo_health.png') }}">
             <strong class="is-sparta"
-                    style="font-family: 'Stylish', sans-serif;font-size: larger;">D3Workout</strong>
+                    style="font-family: 'Stylish', sans-serif;font-size: larger;">D3Worklog</strong>
         </a>
     </div>
 </nav>
@@ -40,7 +52,7 @@
         <div class="media-content">
             <div class="field">
                 <p class="control">
-                    <input id="input-post" class="input is-rounded" placeholder="어떤 운동이 가장 효과적이었나요?"
+                    <input id="input-post" class="input is-rounded" placeholder="운동일지를 작성해주세요"
                            onclick='$("#modal-post").addClass("is-active")'></p>
             </div>
         </div>
@@ -54,7 +66,7 @@
                         <div class="field">
                             <p class="control">
                                         <textarea id="textarea-post" class="textarea"
-                                                  placeholder="어떤 운동이 가장 효과적이었나요?"></textarea>
+                                                  placeholder="운동일지를 작성해주세요"></textarea>
                             </p>
                         </div>
                         <nav class="level is-mobile">
@@ -91,11 +103,7 @@
                 </div>
                 <div class="media-content">
                     <div class="content">
-                        <p>
-                            <strong>홍길동</strong> <small>@username</small> <small>10분 전</small>
-                            <br>
-                            글을 적는 칸
-                        </p>
+
                     </div>
                     <nav class="level is-mobile">
                         <div class="level-left">
